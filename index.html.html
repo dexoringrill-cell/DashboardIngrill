@@ -381,7 +381,9 @@ function showPage(p){
 }
 function syncUI(){
   document.getElementById('cfgMonth').value=rMonth;document.getElementById('cfgObj').value=mObj;
-  document.getElementById('headerMonth').textContent=new Date(rMonth+'-01').toLocaleDateString('es-ES',{month:'long',year:'numeric'});
+  const [ry,rm]=rMonth.split('-').map(Number);
+  const MESES=['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+  document.getElementById('headerMonth').textContent=MESES[rm-1]+' de '+ry;
   document.getElementById('printMonth').textContent=document.getElementById('headerMonth').textContent;
 }
 function updateConfig(){rMonth=document.getElementById('cfgMonth').value;mObj=+document.getElementById('cfgObj').value;syncUI();renderTable();}
